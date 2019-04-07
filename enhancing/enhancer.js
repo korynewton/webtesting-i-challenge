@@ -26,7 +26,18 @@ function succeed(item) {
 }
 
 function fail(item) {
-  return { ...item };
+  if (typeof item === 'object' && item.hasOwnProperty('enhancement') && item.enhancement < 15) {
+    item.durability = item.durability - 5
+    return  {...item}
+  }
+  else if (item.enhancement >= 15) {
+    item.durability = item.durability - 10 
+    if (item.enhancement > 16) {
+      item.enhancement = item.enhancement - 1
+    }
+    return {...item}
+  }
+  return null;
 }
 
 

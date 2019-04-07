@@ -8,9 +8,20 @@ const item = {
 }
 
 const item2 = {
-    name: "Bow",
+    name: "Sword",
     durability: 100,
     enhancement: 20
+}
+
+const item3 = {
+    name: "Shield",
+    durability: 100,
+    enhancement: 14
+}
+const item4 = {
+    name: "knife",
+    durability: 100,
+    enhancement: 15
 }
 
 describe('repair', () => {
@@ -34,7 +45,18 @@ describe('succeed', () => {
         expect(succeed('')).toBe(null)
         expect(succeed([])).toBe(null)
         expect(succeed(false)).toBe(null)
+    })
+})
 
 
+describe('fail', () => {
+    it('should fail correctly', () => {
+        expect(fail(item3).durability).toBe(95)
+        expect(fail(item4).durability).toBe(90)
+        expect(fail(item2).enhancement).toBe(19)
+        expect(fail(12)).toBe(null)
+        expect(fail('')).toBe(null)
+        expect(fail([])).toBe(null)
+        expect(fail(false)).toBe(null)
     })
 })
