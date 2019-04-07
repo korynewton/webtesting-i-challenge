@@ -15,7 +15,14 @@ function repair(item) {
 }
 
 function succeed(item) {
-  return { ...item };
+  if (typeof item === 'object' && item.hasOwnProperty('enhancement') && item.enhancement < 20) {
+    item.enhancement++
+    return {...item}
+  } else if (item.enhancement === 20) {
+    return {...item}
+  } else {
+    return null
+  }
 }
 
 function fail(item) {
